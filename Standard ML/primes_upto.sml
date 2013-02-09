@@ -1,11 +1,14 @@
 use "is_prime.sml";
-
+(*
+--> int-> int list
+--> gives primes from 2 to num, where num is the largest prime number below n
+*)
 fun primes_upto(n) =
     let fun primes_list(m, acc)=
 	    if m<=n then
-		if is_prime(m) then primes_list(m+1,acc@[m])
-		else primes_list(m+1,acc)
+		if is_prime(m) then primes_list(m+2,acc@[m])
+		else primes_list(m+2,acc)
 	    else acc
     in
-	primes_list(2,[])
+	primes_list(3,[2])
     end
