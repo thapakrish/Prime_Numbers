@@ -1,4 +1,4 @@
-(*Krishna Thapa
+(*author@Krishna
 --> int*int->int list
 --> gives primes numbers between two numbers (including both numbers)
 --> when starting num=2, it gives primes from 3 to end num.

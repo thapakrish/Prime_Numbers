@@ -1,4 +1,4 @@
-(*Krishna Thapa
+(*author@Krishna
 tests for is_prime*)
 
 (*primes*)

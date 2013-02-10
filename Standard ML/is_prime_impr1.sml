@@ -1,6 +1,6 @@
 use "primes_below.sml";
 
-(*Krishna Thapa
+(*author@Krishna
 -->int->bool
 -->checks if a given number is a prime number
 *)

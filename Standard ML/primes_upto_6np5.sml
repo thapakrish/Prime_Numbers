@@ -1,5 +1,5 @@
 (*
-Krishna Thapa
+author@Krishna
 -->checking only 6N+1 and 6N+5
 -->It may get slower because of too many function calls (especially calls to List).
 *)

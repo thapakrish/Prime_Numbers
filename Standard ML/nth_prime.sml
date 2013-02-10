@@ -1,6 +1,6 @@
 use "is_prime_impr1.sml";
 
-(* Krishna Thapa
+(* author@Krishna
 -->int->int
 -->gives nth prime number
 -->Not that fast. Using is_prime_impr1.

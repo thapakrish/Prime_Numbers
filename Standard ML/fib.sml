@@ -1,6 +1,6 @@
 use "is_prime_impr1.sml";
 
-(* Krishna Thapa
+(* author@Krishna
 --> Fibonacci numbers
 --> Assumption::n>=1
 *)
