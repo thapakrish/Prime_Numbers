@@ -1,5 +1,6 @@
+(*Krishna Thapa
+tests for is_prime*)
 
-(*tests for is_prime*)
 (*primes*)
 val true3 = is_prime(3)=true;
 val true5 = is_prime(5)=true;

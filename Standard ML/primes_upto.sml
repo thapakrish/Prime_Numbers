@@ -1,5 +1,5 @@
 use "is_prime.sml";
-(*
+(*Krishna Thapa
 --> int-> int list
 --> gives primes from 2 to num, where num is the largest prime number below n
 *)

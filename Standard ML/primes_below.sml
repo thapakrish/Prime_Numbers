@@ -1,4 +1,4 @@
-(*
+(*Krishna Thapa
 --> int-> int list
 --> gives list of prime numbers below n.
 *)

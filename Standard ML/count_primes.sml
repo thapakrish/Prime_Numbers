@@ -1,6 +1,6 @@
 use "primes_from_to.sml";
 
-(*
+(*Krishna Thapa
 --> int*int->int
 --> counts the number of primes between two numbers.
 *)

@@ -1,4 +1,4 @@
-(*
+(*Krishna Thapa
 --> fn : int->bool
 --> Very simple code/ nothing fancy here, just to test my understanding of let expressions.
 --> Checks if given integer is prime
