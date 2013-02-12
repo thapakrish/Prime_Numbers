@@ -24,18 +24,3 @@ fun primes_below (n)=
 
 
 
-(*
-cuban prime::have the form (n + 1)^3 − n^3
-. The ﬁrst few are 7, 19, 37, 61, 127, 271,
-*)
-
-val tab = fn n=>List.tabulate(n,fn x=>x)
-val check_prime = map (fn x => if is_prime((x+1)*(x+1)*(x+1)-(x*x*x)) 
-			       then [(x+1)*(x+1)*(x+1)-(x*x*x)] 
-			       else [])
-val cuban_prime = check_prime o tab
-
-
-(*panaitopol primes
-p=(x^4-y^4)/(x^3-y^3)
-*)
