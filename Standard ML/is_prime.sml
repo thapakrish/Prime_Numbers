@@ -8,9 +8,9 @@
 fun is_prime (n) =
     let fun is_not_divisible (from, to)=
 	    if from < to then
-		n mod from <> 0 andalso is_not_divisible (from+1,to)
+		n mod 2 <> 0 andalso n mod from <> 0 andalso is_not_divisible (from+2,to)
 	    else true
     in
-	is_not_divisible(2,floor(Math.sqrt (Real.fromInt n))+1)
+	is_not_divisible(3,floor(Math.sqrt (Real.fromInt n))+1)
     end 
 	
