@@ -3,6 +3,7 @@ use "primes_below.sml";
 (*author@Krishna
 -->int->bool
 -->checks if a given number is a prime number
+-->is_prime_impr1 is also recursive, in a sense that primes_below checks for primes and gives primes_list.  It uses higher order functions, instead of utilizing SML's recursive call mechanisms.
 *)
 fun is_prime_impr1 (n)=
     let fun check_prime (acc) =
@@ -20,3 +21,4 @@ fun is_prime_impr1 (n)=
 	    else check_prime(primes_list)
 	end
     end
+
