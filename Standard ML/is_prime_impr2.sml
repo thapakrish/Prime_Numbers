@@ -1,4 +1,4 @@
-(*
+(*author@Krishna
 --> Want to check if a given number is a prime number
 --> Let's say the given number n = 101. We want to know if it is a prime number.
 --> SQRT(101) would give 10/11, depending on floor or ceil functions.
