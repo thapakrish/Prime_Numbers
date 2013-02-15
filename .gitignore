@@ -1,1 +1,7 @@
+#To remove ds_store from macbook::
 .DS_Store
+
+#To emacs buffers::
+*~
+[#]*[#]
+.\#*
