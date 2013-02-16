@@ -12,8 +12,12 @@ val check_prime = map (fn x => if is_prime((x+1)*(x+1)*(x+1)-(x*x*x))
 			       else 0)
 
 
-val cuban_primes = check_prime o tab
-
+fun cuban_primes (n) =  
+    let
+	val possible = (check_prime o tab) (n)
+    in
+	List.filter(fn x => x > 1) possible
+    end
 (*for each n, filter checks whether it gives a cuban prime.*)
 
 (*tests*)
