@@ -7,7 +7,7 @@
 *)
 fun is_prime (n) =
     let fun is_not_divisible (from, to)=
-	    if from < to then
+	    if from <= to then
 		n mod 2 <> 0 andalso n mod from <> 0 andalso is_not_divisible (from+2,to)
 	    else true
     in
