@@ -31,7 +31,7 @@ fun is_divisible_by (n, lst) = (*int*int list -> bool*)
 fun is_not_divisible (n)= (*int->bool*)
     let
 	val sqrt_n = floor(Math.sqrt (Real.fromInt n))
-	val odd_num = List.tabulate(sqrt_n, fn x=>2*x +1)
+	val odd_num = List.tabulate(sqrt_n div 2 +1, fn x=>2*x +1)
 				(*odd_num has 1 but not 2 in the list*)
 	val lst = 2::tl(odd_num)
 		                (*removing 1 and adding 2 to the list*)
