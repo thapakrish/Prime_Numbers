@@ -1,0 +1,6 @@
+
+--> Add codes for 6n+-1 in Primes
+--> Implement Primality Tests to check primes
+
+
+
