@@ -1,4 +1,5 @@
 (*author@Krishna
+Using signatures and structures. Healthy for abstraction.
 *)
 
 
@@ -13,6 +14,8 @@ val factors_of : int -> int list
 val PrimePi : int -> int list
 val fib : int -> int list
 val cuban : int -> int list
+val spiral : int -> int list
+val fromlist : int list -> int list
 end
 
 structure Primes :> Primes_sig=
@@ -42,6 +45,7 @@ fun is_not_divisible (n)= (*int->bool*)
 		   
 fun is_prime (n) = (* int -> bool *)
     if n < 0 then raise BadNum
+    else if n = 1 then false
     else if n = 2 then true (* 2 mod 2 <>0 will give false in is_not_divisible*)
     else is_not_divisible (n)
 
@@ -53,7 +57,8 @@ fun upto (n) = (*int -> int list*)
 	    else helper(m+2,acc)
 	else acc
     in
-	helper(3,[2])
+	if n < 2 then [] 
+	else helper(3,[2])
     end
 
 fun from_to (from,to)=
@@ -94,6 +99,7 @@ fun fib_sequence (n) = (*int->int list, Fib(0)=0 and Fib(1)=1*)
 	in
 	    helper(2,1,1,[0,1])
 	end
+
 fun fib (n) = List.filter(fn x => is_prime(x)) (fib_sequence(n))
 
 fun PrimePi (n) = 
@@ -120,6 +126,34 @@ fun cuban (n) =
 	List.filter(fn x => x > 1) possible
     end
 
-    
+fun diagonal_steps (start, stop, step) =
+    if start > stop then []
+    else [start] @ diagonal_steps (start+step, stop, step)
+
+
+fun fromlist (lst) =
+    case lst of
+	[]=> []
+      | xs::[] =>  if is_prime(xs) then [xs] else []
+      | xs::ys =>  if is_prime(xs) then [xs]@fromlist(ys)
+		   else []@fromlist(ys)	    
+
+
+fun spiral (n) = (* int -> int list*)
+    (* n is assumed to be odd and greater than 1*)
+    if n < 1 then []
+    else if n mod 2 = 0 then []
+    else
+	let fun diagonal_odds (m) =
+		if m = 1 then [1]
+		else diagonal_odds(m-2)@diagonal_steps((m-2)*(m-2)+(m-1), m*m , m-1)					      
+	in
+	    diagonal_odds(n)
+(* Can directly spit out the primes only by using fromlist.
+I'm currently interested in looking at the number of total primes and primes at the diagonals. spiraltest.sml uses the above output to look at such properties.
+*)
+	end
+
+	    
 end
 
