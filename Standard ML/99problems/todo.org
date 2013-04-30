@@ -1,0 +1,13 @@
+
+* Avoid polyEaual
+- [ ] encode
+- [ ] pack
+- [ ] compress2
+- [ ] compress
+- [ ] is_palindrome
+
+
+* Testing
+- [ ] use qcheck for testing
+- [ ] remove earlier testing files
+- [ ] Use compilation manager
