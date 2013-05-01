@@ -11,3 +11,6 @@
 - [ ] use qcheck for testing
 - [ ] remove earlier testing files
 - [ ] Use compilation manager
+
+* CM files
+- [ ] CM for list not compiling because of random

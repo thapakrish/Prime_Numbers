@@ -1,4 +1,7 @@
-(*Problems from https://sites.google.com/site/prologsite/prolog-problems/1
+(*
+author@Krishna
+
+Problems from https://sites.google.com/site/prologsite/prolog-problems/1
 
 Instead of built in functions, I'll be using recursion, let expressions, and pattern matching as much as possible.
 
@@ -46,7 +49,7 @@ fun size (lst) =
 
 fun reverse (lst) =
     case lst of
-	[]=> raise Empty
+	[]=> []
       | xs::ys => reverse(ys) @ [xs]
 
 (*1.06*)
@@ -233,9 +236,21 @@ fun insert_at(alpha, lst, N) =
 				    
 				 
 (*1.22*)
-fun range(num1, num2) =
+fun range (num1, num2) =
     if num1<num2 then num1::range(num1+1,num2)
     else [num2]
 
-		 
+
+(*1.23*)
+fun rnd_select (lst, num) =
+    let
+	val x = Random.rand(num, size lst)
+	val y = Random.randRange (1, size lst) x
+	val item = valOf(nth_item(lst, y))
+    in
+	if num > 0 then
+	    item :: rnd_select(List.filter(fn x=> x <> item) lst, num-1)
+	else []
+    end	
+
 end
