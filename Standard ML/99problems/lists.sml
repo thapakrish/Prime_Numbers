@@ -52,10 +52,14 @@ fun reverse (lst) =
 	[]=> []
       | xs::ys => reverse(ys) @ [xs]
 
+(*helper function to avoid polyEqual warnings*)
+fun equals (a,b) =
+    a=b
+
 (*1.06*)
 
 fun is_palindrome (lst) =
-    lst = reverse(lst)
+    equals(lst, reverse(lst))
 
 (*1.07*)
 
@@ -75,7 +79,7 @@ fun flatten (lst) =
 fun compress (lst) =
     case lst of
 	[]=> []
-      | xs::ys::zs => if xs = ys then compress (ys::zs)
+      | xs::ys::zs => if equals (xs, ys) then compress (ys::zs)
 		      else xs::compress(ys::zs)
 				       
       | xs::ys => xs::compress(ys)
@@ -85,7 +89,7 @@ fun compress2 (lst) =
     let fun compare (from, to) =
 	    case from of
 		[]=> []
-	      | xs::ys => if xs = to then compare(ys, to)
+	      | xs::ys => if equals(xs, to) then compare(ys, to)
 			  else xs :: compress2(ys)
     in
 	if null lst then [] else
@@ -98,7 +102,7 @@ fun pack (lst) =
     let fun compare (from,to,acc) =
 	    case from of
 		[]=> acc::[]
-	      | xs::ys => if xs = to then compare (ys, xs, to::acc)
+	      | xs::ys => if equals(xs, to) then compare (ys, xs, to::acc)
 			  else acc::compare (ys,xs,[xs])
     in
 	if null lst then []
@@ -111,7 +115,7 @@ fun encode (lst) =
     let fun compare (from, to, count) =
 	    case from of
 		[]=> [(to,count)]
-	      | xs::ys => if xs = to then compare (ys, to, count+1)
+	      | xs::ys => if equals (xs, to) then compare (ys, to, count+1)
 			  else [(to, count)] @ encode(xs::ys) 
     in
 	if null lst then []

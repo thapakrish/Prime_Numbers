@@ -23,7 +23,7 @@ sig
     val remove_at : 'a list * int -> 'a list
     val insert_at : 'a * 'a list * int -> 'a list
     val range : int * int -> int list
-    val rnd_select : 'a list * int -> 'a list
+    val rnd_select : ''a list * int -> ''a list
 
 end
     
