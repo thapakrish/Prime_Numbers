@@ -4,6 +4,8 @@ Problems from https://sites.google.com/site/prologsite/prolog-problems/2
 Not the most efficient is_prime algorithm, but it'll do here.
 *)
 
+structure ProLogArith :> PROBLEMS99 =
+struct
 
 (*2.01*)
 
@@ -58,8 +60,21 @@ fun prime_factors_mult (n) =
 	end
     end
 
-fun diff_list (lista, listb) =
-    case (lista,listb) of
+(*helper function*)
+
+fun is_in (item, lst) =
+	    case lst of
+		[]=> false
+	      | xs::ys => if xs = item then true
+			  else is_in (item, ys)
+				      
+(*helper function*)
+
+fun difference (lista, listb) =
+    case lista of
+	[]=>[]
+      | xs::ys => if is_in (xs, listb) then difference (ys, listb)
+		  else xs::difference(ys, listb)
 
 
 (*2.04*)
@@ -69,5 +84,58 @@ fun primes_between (below, upper) =
 	val bp = primes_below (below)
 	val up = primes_below (upper)
     in 
-
+	difference (up, bp)
     end
+
+(*2.05 Goldbach's conjecture*)
+(*Wow, this works! Awesome!!!*)
+
+fun goldbach (num) =
+    let
+	val possible_primes = primes_below(num)
+    in
+	let fun check (N, pp , acc) =
+		case pp of
+		    []=> check (N, possible_primes, acc+1)
+		  | xs::ys => if is_prime (acc) andalso (xs+acc = N) then [xs,acc]
+			      else check (N, ys, acc)
+	in
+	    check (num, possible_primes,2)
+	end
+    end	    
+
+(*2.06*)
+
+fun goldbach_list (lower, upper) =	    
+    if lower <=upper then
+	goldbach (lower) :: goldbach_list(lower+2, upper)		 
+    else []
+
+(* 2.07*)
+
+fun gcd (m,n) =
+    if m=n then m
+    else if m < n
+    then gcd(m,n-m)
+    else gcd(n,m)	    
+
+(*2.08*)
+
+fun coprime (a, b) =
+    gcd (a,b) = 1
+
+(*2.09*)
+
+fun phi (m) =
+    let fun totient_phi (n1, n2) =
+	    if n1<=n2 then
+		if gcd(n1,n2)=1 then 1 + totient_phi (n1+1,n2)
+		else 0 + totient_phi (n1+1,n2)
+	    else 0
+    in
+	totient_phi(1,m)
+    end
+
+(*2.10*)
+
+end
