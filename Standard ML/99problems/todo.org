@@ -1,11 +1,11 @@
 
 * Avoid polyEaual
-- [ ] encode
-- [ ] pack
-- [ ] compress2
-- [ ] compress
-- [ ] is_palindrome
-
+- [X] encode
+- [X] pack
+- [X] compress2
+- [X] compress
+- [X] is_palindrome
+- [ ] rdn_select  
 
 * Testing
 - [ ] use qcheck for testing
@@ -14,3 +14,7 @@
 
 * CM files
 - [ ] CM for list not compiling because of random
+- [ ] CM for test cases
+
+* Random
+- [X] Fix the issue with random in lists.sml
