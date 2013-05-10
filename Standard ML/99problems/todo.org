@@ -9,11 +9,11 @@
 
 * Testing
 - [ ] use qcheck for testing
-- [ ] remove earlier testing files
+- [X] remove earlier testing files
 - [ ] Use compilation manager
 
 * CM files
-- [ ] CM for list not compiling because of random
+- [X] CM for list not compiling because of random
 - [ ] CM for test cases
 
 * Random

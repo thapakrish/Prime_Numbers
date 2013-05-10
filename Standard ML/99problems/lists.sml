@@ -258,3 +258,5 @@ fun rnd_select (lst, num) =
     end	
 
 end
+
+(*1.24*)
