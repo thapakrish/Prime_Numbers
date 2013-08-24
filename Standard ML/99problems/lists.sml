@@ -220,7 +220,7 @@ fun rotate (lst, N) =
 
 (*1.20*)
 	
-fun remove_at(lst, N) =
+fun remove_at (lst, N) =
 (*
     if N < 1 then raise BadNum (N)
 *)
@@ -232,7 +232,7 @@ fun remove_at(lst, N) =
 	
 (*1.21*)
 
-fun insert_at(alpha, lst, N) =
+fun insert_at (alpha, lst, N) =
     case lst of
 	[]=> if N = 1 then [alpha] else []
       | xs::ys => if N > 1 then xs :: insert_at(alpha, ys, N-1)
@@ -240,12 +240,13 @@ fun insert_at(alpha, lst, N) =
 				    
 				 
 (*1.22*)
+
 fun range (num1, num2) =
     if num1<num2 then num1::range(num1+1,num2)
     else [num2]
 
-
 (*1.23*)
+
 fun rnd_select (lst, num) =
     let
 	val x = Random.rand(num, size lst)
@@ -257,20 +258,23 @@ fun rnd_select (lst, num) =
 	else []
     end	
 
-end
-
 (*1.24*)
 fun rnd_select_range (low, high) =
     let
 	val lst = range(low, high)
     in
-	rnd_select(lst, len(lst))
+	rnd_select(lst, high-low)
     end
+
 
 (*1.26*)
 fun combination (num, lst) =
     case (num,lst) of
 	(0,_) =>[[]]
       | (_,[]) => []
-      | (m,x::xs) => map (fn y => x::y) (combination (m-1,xs)) @ combination(m,xs)									    
-									    
+      | (m,x::xs) => map (fn y => x::y) (combination (m-1,xs)) @ combination(m,xs)
+
+
+
+
+end
