@@ -260,3 +260,17 @@ fun rnd_select (lst, num) =
 end
 
 (*1.24*)
+fun rnd_select_range (low, high) =
+    let
+	val lst = range(low, high)
+    in
+	rnd_select(lst, len(lst))
+    end
+
+(*1.26*)
+fun combination (num, lst) =
+    case (num,lst) of
+	(0,_) =>[[]]
+      | (_,[]) => []
+      | (m,x::xs) => map (fn y => x::y) (combination (m-1,xs)) @ combination(m,xs)									    
+									    
