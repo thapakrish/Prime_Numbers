@@ -8,5 +8,5 @@ sig
     val gcd : int * int -> int
     val coprime : int * int -> bool
     val phi : int -> int
-		     
+    val totient_phi : int -> int		     
 end

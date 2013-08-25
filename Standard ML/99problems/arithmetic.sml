@@ -137,5 +137,22 @@ fun phi (m) =
     end
 
 (*2.10*)
+(*helper function*)
+fun power (num, n) =
+    if n = 0 then 1
+    else num * power(num, n-1)
+
+fun totient_phi (num) =
+    let fun  multiply_phi (lst) =
+	     case lst of	   
+	       [a,b]::ys => (a-1) * power(a , b -1) * multiply_phi(ys)
+	      | _ => 1
+    in
+	multiply_phi(prime_factors_mult(num))
+    end
+
+(*2.11
+Use a timer
+*)
 
 end
