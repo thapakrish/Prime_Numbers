@@ -26,7 +26,9 @@ sig
     val rnd_select : ''a list * int -> ''a list
     val rnd_select_range : int * int -> int list
     val combination : int * 'a list -> 'a list list
-
+    val quicksort : 'a list list -> 'a list list
+    val lsort : 'a list list -> 'a list list
+    val lfsort : 'a list list -> 'a list list
 end
     
 

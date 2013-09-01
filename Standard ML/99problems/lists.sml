@@ -1,5 +1,5 @@
 (*
-author@Krishna
+Author@Krishna
 
 Problems from https://sites.google.com/site/prologsite/prolog-problems/1
 
@@ -274,7 +274,97 @@ fun combination (num, lst) =
       | (_,[]) => []
       | (m,x::xs) => map (fn y => x::y) (combination (m-1,xs)) @ combination(m,xs)
 
+(*1.27
+Multinomial coefficients
+*)
 
+
+(*helper function for sorting*)
+fun quicksort (lst) =
+    case lst of
+	[] => []
+      | hd::[] => [hd]
+      | pivot::rest => let
+	  val (left, right) = List.partition (fn x => size(x) < size(pivot)) rest
+      in
+	  quicksort left @ [pivot] @ quicksort right
+      end
+
+(*1.28a*)
+fun lsort (lnlist) =
+    quicksort(lnlist)
+	
+(*helper functions for 1.28b*)
+
+fun count (item,lst,acc) =
+    case lst of
+	[]=> acc
+      | xs::ys => if item = xs then count(item, ys, acc+1)
+		  else count(item, ys, acc)
+
+fun delete (item, lst) =
+    if null lst then []
+    else if item = hd lst
+    then delete(item, tl lst)
+    else hd(lst)::delete(item, tl lst)
+
+fun strip_duplicates (lst) =
+    case lst of
+	[]=>[]
+      | xs::ys => xs::strip_duplicates(delete(xs,ys))
+
+fun size_it (lst) =
+	    case lst of
+		[]=> []
+	      | xs::ys => List.length(xs)::size_it(ys)	
+
+fun quicksort_tuple (lst):(int*int) list =
+    case lst of
+	[] => []
+      | hd::[] => [hd]
+      | pivot::rest => let
+	  val (left, right) = List.partition (fn x => #2 x < #2 pivot) rest
+      in
+	  quicksort_tuple left @ [pivot] @ quicksort_tuple right
+      end
+
+fun loop_given_list (num,lst1) =
+    case lst1 of
+	[]=>[]
+      | xs::ys => if num = List.length(xs) then xs::loop_given_list(num,ys)
+		  else loop_given_list(num,ys)
+
+fun frequency_lists (lst1,lst2) =		    
+    case lst1 of
+	[]=> []
+      | xs::ys => (xs,count(xs,lst2,0))::frequency_lists(ys,lst2)
+
+(*1.28b*)
+
+(* Most likely a overkill.
+a)->get the sizes of the list
+b)->get unique sizes
+c)->get frequency by comparing a, and b.
+d)->quicksort by frequency
+e)->compare #2 of each tuple and sort return lists accordingly
+*)				      
+fun lfsort (lnlist)=
+    let
+	val list_sizes = size_it (lnlist)
+	val list_unique_sizes = strip_duplicates(list_sizes)
+	val freq_tuples = frequency_lists (list_unique_sizes, list_sizes)
+	val quic = quicksort_tuple(freq_tuples)
+	val sorted_size_list = List.map(fn x=> #1 x) quic
+
+    in
+	let fun loop_through_ssl (lst) =
+		case lst of
+		    []=> []
+		  | xs::ys => loop_given_list (xs, lnlist)@loop_through_ssl(ys)
+	in
+	    loop_through_ssl(sorted_size_list)
+	end
+    end
 
 
 end
